@@ -1,13 +1,9 @@
 # Overview
 
-{Provide a description of the data set that you are analyzing.  Include the link of where you obtained the data.}
-I analyzed a dataset of top 1000 movies in an IMDB list.
+I analyzed a dataset of top the 1000 movies in IMDB.
 https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows
 
-{Describe your purpose for writing this software to analyze the data.}
 I wanted to better understand the relationship that movies have in it's ratings and other variables of the movie.
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the data set, the questions and answers, the code running and a walkthrough of the code.}
 
 [Software Demo Video](https://www.loom.com/share/03e63683af404930844cdd1dbee2a67b)
 
