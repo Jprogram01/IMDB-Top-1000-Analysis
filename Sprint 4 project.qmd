@@ -1,0 +1,61 @@
+
+Is there a pattern between the decade a movie it was released in, and the rating it recieves on IMDB for the top 1000 movies in IMDB?
+```{python}
+import numpy as np
+import pandas as pd
+import altair as alt
+data = pd.read_csv("imdb_top_1000.csv")
+
+data.fillna(np.nan)
+values_to_replace =  [" ", "","None", "none"]
+
+data.replace(values_to_replace, np.nan, inplace=True)
+
+data['Released_Year'] = pd.to_numeric(data['Released_Year'], errors='coerce')
+data['decade'] = (data['Released_Year']) // 10 * 10
+data['decade'] = pd.to_numeric(data['decade'], errors='coerce')
+min_year = data["decade"].min()
+max_year = data['decade'].max()
+chart = (alt.Chart(data)
+  .encode(
+    x="decade",
+    y='mean(IMDB_Rating)',
+    )
+  .mark_line()
+)
+chart
+
+```
+
+What is the relationship between how much a movie grosses and the decade its in?
+
+```{python}
+import numpy as np
+import pandas as pd
+import altair as alt
+data = pd.read_csv("imdb_top_1000.csv")
+
+data.fillna(np.nan)
+values_to_replace =  [" ", "","None", "none"]
+
+data.replace(values_to_replace, np.nan, inplace=True)
+
+data['Released_Year'] = pd.to_numeric(data['Released_Year'], errors='coerce')
+data['decade'] = (data['Released_Year']) // 10 * 10
+data['decade'] = pd.to_numeric(data['decade'], errors='coerce')
+data['Gross'] = pd.to_numeric(data['Gross'].str.replace(',', ''))
+min_year = data["decade"].min()
+max_year = data['decade'].max()
+
+
+chart = (alt.Chart(data)
+  .encode(
+    x="decade",
+    y='mean(Gross)',
+    )
+  .mark_line()
+)
+chart
+```
+
+As the decades go on the average gross for a movie in each decade increases significantly, even though inflation is also increasing, the average gross for a movie overtakes that.
